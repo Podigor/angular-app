@@ -1,8 +1,10 @@
 import LoginPage from "../../cypress/pageObjects/LoginPage"
+import DashboardPage from "../../cypress/pageObjects/DashboardPage"
 
 describe('Login', () => {
 
     const loginPage = new LoginPage()
+    const dashboardPage = new DashboardPage()
 
     beforeEach(()=> {
         loginPage.navigate()
@@ -15,7 +17,7 @@ describe('Login', () => {
         } 
         loginPage.fillUserCredentials(userCredentials)
         loginPage.loginButton.click()
-        cy.url().should('eq', loginPage.landingPageUrl)
+        cy.url().should('eq', dashboardPage.dashboardPageUrl)
     })
     it('Checks that user can login without remember me option', () => {
         const userCredentials = {
@@ -24,6 +26,6 @@ describe('Login', () => {
         } 
         loginPage.fillUserCredentials(userCredentials)
         loginPage.loginButton.click()
-        cy.url().should('eq', loginPage.landingPageUrl)
+        cy.url().should('eq', dashboardPage.dashboardPageUrl)
     })
   })
